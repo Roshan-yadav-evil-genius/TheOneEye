@@ -1,5 +1,10 @@
-### Building automation people can trust
+# TheOneEye
 
+<div align="center">
+  <img src="media/logo.png" alt="TheOneEye Logo" width="200">
+</div>
+
+### Building automation people can trust
 TheOneEye is a managed automation company focused on building, operating, and maintaining reliable workflows for modern businesses.
 
 Automation today is powerful, but fragile. Tools execute tasks, yet responsibility often falls through the cracks. When systems break, the cost is usually hidden — lost time, missed opportunities, and growing operational risk.
@@ -13,6 +18,10 @@ We take responsibility for the automations we build, ensuring they continue to w
 ## What TheOneEye Does
 
 TheOneEye designs and manages custom automation systems that support real business operations.
+
+<div align="center">
+  <img src="media/TheOneEyeFirstLook.gif" alt="TheOneEye Platform Overview" width="800">
+</div>
 
 We build workflows using a node-based execution platform that can accomplish almost any task. Workflows are composed of configurable nodes that can represent:
 
