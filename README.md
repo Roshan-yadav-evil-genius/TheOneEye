@@ -14,12 +14,17 @@ We take responsibility for the automations we build, ensuring they continue to w
 
 TheOneEye designs and manages custom automation systems that support real business operations.
 
-We automate workflows using:
+We build workflows using a node-based execution platform that can accomplish almost any task. Workflows are composed of configurable nodes that can represent:
 
-* APIs where they exist
-* Browser-based automation where they don’t
+* API calls and integrations
+* Browser actions and web automation
+* Data processing and transformation
+* AI and ML inference
+* Decision logic and conditional flows
+* Validation and quality checks
+* Human-in-the-loop steps
 
-This allows us to work with nearly any system, including platforms that require login, manual steps, or user interaction.
+The platform is extensible: new node connectors can be developed for any task or system. This allows us to work with nearly any system, including platforms that require login, manual steps, or user interaction.
 
 Our focus is not on building tools, but on delivering outcomes that continue to work over time.
 

@@ -9,7 +9,7 @@ When workflows break, leads are lost, data goes out of sync, and founders become
 
 TheOneEye exists to close that gap.
 
-We design, run, and maintain custom automations using APIs **and browser-based automation** for systems where no API exists. Our team actively monitors workflows, handles failures, and fixes issues when systems change — so founders don’t have to.
+We design, run, and maintain custom automations using a configurable execution platform that can accomplish almost any task via node-based workflows — including API calls, browser automation, data processing, AI/ML inference, and decision logic. The platform is extensible, allowing us to develop custom nodes for any system or requirement. Our team actively monitors workflows, handles failures, and fixes issues when systems change — so founders don't have to.
 
 This is not a DIY platform.
 It’s a **managed automation service**.

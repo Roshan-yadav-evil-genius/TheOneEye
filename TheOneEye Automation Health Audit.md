@@ -20,7 +20,7 @@ We review your existing automations across five critical areas:
   Which processes matter most to revenue and operations?
 
 * **Failure Points**
-  Where can workflows break due to API limits, UI changes, credentials, or logic gaps?
+  Where can workflows break due to API limits, UI changes, credentials, logic gaps, data processing errors, or intelligence failures?
 
 * **Ownership & Accountability**
   Who is responsible when something fails — and is that ownership clear?
