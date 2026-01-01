@@ -1,6 +1,4 @@
-# TheOneEye Team Architecture
-
-> **Purpose**: This document defines the end-state vision for TheOneEye AI Team system. It serves as the requirements specification for AI agent developers to design and implement the collaborative team architecture with **Dynamic Group Intelligence** - human-like behavior including interrupts, debates, breakout rooms, and relationship awareness.
+# TheOneEye Ai Team Group Discussion Architecture
 
 ---
 
@@ -905,24 +903,6 @@ flowchart TD
 - **Standards Enforcement**: System checks proposals against TheOneEye standards and ensures violations trigger challenges
 - **Agreement Detection**: System detects when all agents agree and prompts dissenting views
 - **Threshold Manipulation**: System dynamically adjusts interrupt thresholds based on risk level and standards violations
-
----
-
-## File Structure
-
-```
-TheOneEyeTeam/
-├── README.md                    # This file (System Architecture & Requirements)
-├── Moderator.md                 # Moderator persona definition
-└── TeamMembers/
-    ├── The Solution Architect (The Governor).md
-    ├── The Implementation Engineer (The Builder).md
-    ├── The Market Strategist (The Signal).md
-    ├── The Operational Auditor (The Skeptic).md
-    └── The Reliability Operator (The Watchful Eye).md
-```
-
----
 
 ## Development Notes
 
