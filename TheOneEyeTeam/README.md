@@ -322,6 +322,137 @@ graph LR
 
 ---
 
+## Moderator's Debate Encouragement (Active Challenge Promotion)
+
+```mermaid
+sequenceDiagram
+    participant Builder as The Builder
+    participant Moderator as The Moderator
+    participant Skeptic as The Skeptic
+    participant MainChannel as Main Channel
+    
+    Builder->>MainChannel: "Quick hack: Use direct DB access for speed"
+    
+    Note over Moderator: Detects Potential Standards Violation
+    Moderator->>Moderator: Analyze Against TheOneEye Standards
+    Note over Moderator: Direct DB access violates<br/>reliability standards
+    
+    Moderator->>Moderator: Lower Skeptic's Interrupt Threshold
+    Note over Moderator: Risk Context Detected<br/>Threshold: 0.3 (Low)<br/>Normal: 0.7
+    
+    Moderator->>Skeptic: Actively Prompt Challenge
+    Note over Moderator: "Skeptic, does this approach<br/>meet our reliability standards?"
+    
+    Skeptic->>Skeptic: Calculate Bid (Now Lower Threshold)
+    Note over Skeptic: Bid: 0.95 > Threshold: 0.3
+    
+    Skeptic->>MainChannel: "This violates TheOneEye reliability standards.<br/>Direct DB access creates single point of failure."
+    
+    Moderator->>Moderator: Encourage Counter-Response
+    Note over Moderator: Debate Mode Active
+    
+    Builder->>MainChannel: "But we need speed for this feature..."
+    
+    Skeptic->>MainChannel: "Speed without reliability defeats our purpose.<br/>Use connection pooling with circuit breaker."
+    
+    Moderator->>Moderator: Synthesize Consensus
+    Moderator->>MainChannel: "Consensus: Connection pooling with<br/>circuit breaker maintains speed + reliability"
+    
+    Note over Moderator: Moderator actively ensures<br/>standards are challenged, not just allowed
+```
+
+---
+
+## Active Challenge Mechanism
+
+```mermaid
+flowchart TD
+    Proposal[Agent Makes Proposal] --> ModeratorCheck[Moderator: Check Against Standards]
+    
+    ModeratorCheck --> StandardsViolation{Standards<br/>Violation Detected?}
+    
+    StandardsViolation -->|Yes| LowerThreshold[Lower Challenge Threshold]
+    StandardsViolation -->|No| CheckAgreement{All Agents<br/>Agreeing?}
+    
+    LowerThreshold --> IdentifyChallenger[Identify Appropriate Challenger]
+    IdentifyChallenger --> ActivePrompt[Actively Prompt Challenge]
+    ActivePrompt -->|"Skeptic, does this meet<br/>reliability standards?"| ChallengeIssued[Challenge Issued]
+    
+    CheckAgreement -->|Yes - Suspicious| EncourageDissent[Encourage Dissent]
+    CheckAgreement -->|No - Healthy Debate| MonitorDebate[Monitor Debate]
+    
+    EncourageDissent -->|"Governor, any architectural concerns?"| LowerThreshold
+    EncourageDissent -->|"Skeptic, any risk concerns?"| LowerThreshold
+    EncourageDissent -->|"Watchful Eye, operational impact?"| LowerThreshold
+    
+    ChallengeIssued --> DebateMode[Debate Mode Active]
+    MonitorDebate --> DebateMode
+    
+    DebateMode --> CollectViews[Collect Conflicting Views]
+    CollectViews --> Synthesize[Moderator: Synthesize Consensus]
+    Synthesize --> FinalDecision[Final Decision with Standards Enforced]
+    
+    Note1[Key Principle: Agreement is suspicious.<br/>Healthy teams challenge each other.]
+    
+    StandardsViolation -.-> Note1
+    CheckAgreement -.-> Note1
+    
+    style StandardsViolation fill:#ff6b6b
+    style LowerThreshold fill:#f39c12
+    style ActivePrompt fill:#9b59b6
+    style EncourageDissent fill:#e74c3c
+    style DebateMode fill:#e74c3c
+    style FinalDecision fill:#2ecc71
+```
+
+---
+
+## Standards Enforcement & Threshold Manipulation
+
+```mermaid
+graph TB
+    subgraph Standards[TheOneEye Standards]
+        Reliability[Reliability Standards<br/>No Single Points of Failure]
+        Security[Security Standards<br/>Data Sovereignty Required]
+        Scalability[Scalability Standards<br/>Must Handle Growth]
+        Maintainability[Maintainability Standards<br/>Code Must Be Auditable]
+    end
+    
+    Proposal[Agent Proposal] --> CheckStandards[Moderator Checks Standards]
+    
+    CheckStandards --> ViolationType{Type of Violation?}
+    
+    ViolationType -->|Reliability Risk| SkepticThreshold[Skeptic Threshold: 0.3<br/>Normal: 0.7]
+    ViolationType -->|Security Risk| SkepticThreshold2[Skeptic Threshold: 0.2<br/>Normal: 0.7]
+    ViolationType -->|Architecture Risk| GovernorThreshold[Governor Threshold: 0.4<br/>Normal: 0.7]
+    ViolationType -->|Operational Risk| WatchfulEyeThreshold[Watchful Eye Threshold: 0.3<br/>Normal: 0.7]
+    
+    SkepticThreshold --> ActiveChallenge1[Actively Prompt Skeptic]
+    SkepticThreshold2 --> ActiveChallenge1
+    GovernorThreshold --> ActiveChallenge2[Actively Prompt Governor]
+    WatchfulEyeThreshold --> ActiveChallenge3[Actively Prompt Watchful Eye]
+    
+    ActiveChallenge1 --> ChallengeIssued[Challenge Must Be Issued]
+    ActiveChallenge2 --> ChallengeIssued
+    ActiveChallenge3 --> ChallengeIssued
+    
+    ChallengeIssued --> StandardsEnforced[Standards Enforced Through Debate]
+    
+    Note1[Moderator doesn't just allow challenges<br/>- Moderator actively ensures they happen]
+    
+    Standards -.-> Note1
+    ChallengeIssued -.-> Note1
+    
+    style ViolationType fill:#ff6b6b
+    style SkepticThreshold fill:#ffd93d
+    style GovernorThreshold fill:#f38181
+    style WatchfulEyeThreshold fill:#6bcf7f
+    style ChallengeIssued fill:#e74c3c
+    style StandardsEnforced fill:#2ecc71
+```
+
+---
+
 ## Message Flow Architecture
 
 ```mermaid
@@ -721,6 +852,14 @@ flowchart TD
 - **Personality Layer**: Each agent has professional persona (Builder: brief & pragmatic, Signal: enthusiastic & visionary)
 - **Adaptive Routing**: Frustrated Human → Governor for reassurance, Excited Human → Signal for amplification
 
+#### 5. Active Challenge Encouragement (Social Humanization)
+- **Standards Enforcement**: Moderator checks all proposals against TheOneEye standards (reliability, security, scalability, maintainability)
+- **Threshold Manipulation**: When standards violations detected, lower challenge thresholds (e.g., 0.3 instead of 0.7) to make challenges easier
+- **Proactive Prompting**: Moderator actively asks challengers "Does this meet our standards?" rather than just allowing challenges
+- **Agreement Detection**: If all agents agree, Moderator treats this as suspicious and prompts dissenting views
+- **Risk-Based Thresholds**: Lower thresholds for high-risk contexts (security: 0.2, reliability: 0.3, architecture: 0.4)
+- **Challenge Requirement**: Standards violations must trigger challenges - Moderator ensures this happens
+
 ### Moderator Behavior
 
 - **Silence is Valid**: No response when message doesn't require expertise, judgment, or action
@@ -731,6 +870,12 @@ flowchart TD
 - **Vibe-Aware Routing**: Consider sentiment and urgency in routing decisions
 - **Breakout Management**: Create and manage breakout rooms for technical discussions
 - **Debate Orchestration**: Enable debate mode when conflicting KPIs detected, synthesize consensus
+- **Active Challenge Encouragement**: 
+  - **Agreement is Suspicious**: If all agents agree, actively prompt dissenting views
+  - **Standards Enforcement**: When proposals violate TheOneEye standards, lower challenge thresholds and actively prompt appropriate challengers
+  - **Threshold Manipulation**: Dynamically lower interrupt thresholds (e.g., 0.3 instead of 0.7) when standards violations or risks are detected
+  - **Proactive Prompting**: Don't just allow challenges - actively ask "Does this meet our standards?" to ensure challenges happen
+  - **Healthy Skepticism**: Encourage agents to challenge each other, especially when quick fixes or shortcuts are proposed
 
 ### Team Member Behavior
 
@@ -756,6 +901,10 @@ flowchart TD
 - **Interrupt Bid Evaluation**: Evaluate and grant/queue interrupt bids dynamically
 - **Vibe Analysis**: Analyze sentiment, urgency, and context for intelligent routing
 - **Response Synthesis**: Moderator can synthesize multiple member responses into coherent output
+- **Active Challenge System**: Moderator actively encourages challenges by lowering thresholds and prompting challengers
+- **Standards Enforcement**: System checks proposals against TheOneEye standards and ensures violations trigger challenges
+- **Agreement Detection**: System detects when all agents agree and prompts dissenting views
+- **Threshold Manipulation**: System dynamically adjusts interrupt thresholds based on risk level and standards violations
 
 ---
 
@@ -797,6 +946,26 @@ This README defines the **end-state vision** for TheOneEye Team system with **Dy
 4. **Context Saturation Prevention**: Breakout rooms keep main channel focused
 5. **Theory of Mind**: Vibe analysis enables responses to intent and emotion, not just text
 6. **Relationship Awareness**: Teammate dossiers enable proactive anticipation
+7. **Active Challenge Encouragement**: **Moderator doesn't just allow challenges - Moderator actively ensures they happen**
+   - Agreement is suspicious - healthy teams challenge each other
+   - Standards violations must trigger challenges
+   - Moderator lowers thresholds and prompts challengers proactively
+   - Example: Builder suggests quick hack → Moderator lowers Skeptic's threshold to 0.3 and actively asks "Does this meet our reliability standards?"
+
+### Social Humanization Benchmark
+
+**A truly human-like team doesn't just agree with proposals. The Moderator must:**
+- Detect when proposals violate TheOneEye standards
+- Actively lower challenge thresholds for appropriate challengers
+- Proactively prompt challenges with questions like "Does this meet our standards?"
+- Treat unanimous agreement as suspicious and prompt dissenting views
+- Ensure that quick fixes and shortcuts are always challenged
+
+**Example Flow:**
+1. Builder: "Quick hack: Direct DB access for speed"
+2. Moderator: Detects reliability standards violation → Lowers Skeptic threshold to 0.3 → Actively prompts "Skeptic, does this meet our reliability standards?"
+3. Skeptic: "This violates TheOneEye reliability standards. Direct DB access creates single point of failure."
+4. Debate ensues → Consensus reached with standards enforced
 
 **This is the target architecture. Build to match these specifications.**
 
