@@ -159,6 +159,18 @@ Like an ever-watchful eye, TheOneEye is designed to observe, maintain, and prote
 
 ---
 
+## 2026 Goal *"Reaching the Actual Customer"*
+
+> In 2026, our focus is to position **TheOneEye** as a partner that helps organizations reliably reach their *actual* customers—not just leads or contacts. We will do this by building scalable, automation-driven workflows that strengthen sales discovery, reduce wasted outreach, and systematically improve how sales teams identify, engage, and convert the right prospects.
+
+
+| Start Date | Problem | End Date | Status |
+|---------------------------|---------|----------|--------|
+| **30/12/2025** | [system to precisely identify, reach, and activate the decision-shaping personas](./Scratchpad/Problem1.md) | - | InProgress |
+
+
+---
+
 ## In Simple Terms
 
 TheOneEye helps organizations move from:
