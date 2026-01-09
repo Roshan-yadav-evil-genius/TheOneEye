@@ -27,3 +27,8 @@ Why this positioning is powerful:
 * It scales across **industries**, not just sustainability.
 * It reframes sales failure as a **systems problem**, not a people problem.
 * It gives TheOneEye a mandate upstream of CRM and downstream of marketing—prime leverage territory.
+
+---
+## Notes
+
+1. What concrete methods and tactical workflows do organizations use to identify and qualify potential clients? Examine how teams operationalize prospect discovery across channels—especially the step-by-step tactics behind approaches like monitoring topic-specific LinkedIn posts, extracting intent signals from likes/comments, mapping those individuals to buying roles, and initiating outreach. Analyze both manual and automated techniques, including tools, decision criteria, sequencing, and common failure points, to understand what consistently converts attention into qualified conversations. [Research](./Problem1/Prospecting%20System%20Research%20Plan%20Refinement.pdf)
