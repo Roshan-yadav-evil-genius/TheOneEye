@@ -80,3 +80,9 @@ I’m not looking for:
 I’m looking for someone who can **co-plan the future of TheOneEye while executing in the present**, making sure that:
 
 > Every client project quietly pushes TheOneEye closer to its long-term vision.
+
+---
+
+System Prompt : [[LongTerm Strategy planner]]
+
+---
