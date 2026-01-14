@@ -2,13 +2,15 @@
 
 ### Find the failures before they find you
 
-Most automation problems don’t fail loudly.
+Most automation problems don't fail loudly.
 They fail quietly — until revenue, data, or customer trust is already damaged.
 
 The **Automation Health Audit** is a short, focused review of the workflows your business depends on, designed to surface hidden risks and ownership gaps.
 
 This is not a sales demo.
-It’s an operational reality check.
+It's an operational reality check.
+
+> Learn more about TheOneEye: [README.md](README.md) | [For Founders](TheOneEye%20ForFounder.md)
 
 ---
 

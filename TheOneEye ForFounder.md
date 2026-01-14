@@ -7,7 +7,7 @@
 ## Executive Summary — Why TheOneEye Exists
 
 Modern businesses run on automation.
-But most founders don’t actually **trust** their automations.
+But most founders don't actually **trust** their automations.
 
 Leads disappear.
 Workflows break quietly.
@@ -15,7 +15,7 @@ Critical processes depend on one person remembering to check dashboards.
 
 **TheOneEye exists to remove that risk.**
 
-We build, operate, and maintain business-critical automations using a configurable execution platform that can accomplish almost any task — and we stay responsible when things break.
+We build, operate, and maintain business-critical automations using our proprietary execution platform — and we stay responsible when things break. For details about our platform and strategic approach, see [README.md](README.md).
 
 You run the business.
 We make sure the systems run.
@@ -69,12 +69,12 @@ We take responsibility.
 ### What we do:
 
 * Design custom workflows around your real business processes
-* Build workflows using a node-based execution platform that can handle API calls, browser automation, data processing, AI/ML inference, decision logic, and more
+* Build workflows using our proprietary execution platform (see [README.md](README.md) for platform details)
 * Maintain persistent, login-based workflows for real systems
 * Operate and maintain automations continuously
 * Fix failures when they happen — without you chasing them
 
-Our internal platform is extensible: we can develop new node connectors for any task or system. This allows us to work with nearly any system, including platforms that require login, manual steps, or user interaction. The value you buy is **outcomes**, not tools.
+Our platform is extensible and allows us to work with nearly any system, including platforms that require login, manual steps, or user interaction. The value you buy is **outcomes**, not tools.
 
 ---
 
@@ -179,13 +179,17 @@ That’s the standard we build for.
 
 ## The Next Step
 
-We don’t start with promises.
+We don't start with promises.
 We start with clarity.
 
-The first step is a conversation or an automation health review to identify:
+The first step is a conversation or an [Automation Health Audit](TheOneEye%20Automation%20Health%20Audit.md) to identify:
 
 * Where failures can happen
 * Where money or time is leaking
 * Which systems need ownership
 
-**Let’s make your automation something you can trust.**
+**Let's make your automation something you can trust.**
+
+---
+
+For more about TheOneEye's mission, vision, and platform strategy, see [README.md](README.md).
