@@ -1,0 +1,36 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
+  <diagram name="Page-1" id="ys3dFIle7AsgVRo9bDN6">
+    <mxGraphModel dx="1384" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FbqJE7wMECRVas3rWbp1-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FbqJE7wMECRVas3rWbp1-1" target="FbqJE7wMECRVas3rWbp1-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-1" value="Main Thread" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="355" y="160" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-3" value="Page Status Watcher&lt;br&gt;it only observer page and&amp;nbsp;&lt;div&gt;update in which phase page is&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="233" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.471;entryY=0.167;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FbqJE7wMECRVas3rWbp1-1" target="FbqJE7wMECRVas3rWbp1-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-7" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;sequence Program&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="350" width="290" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-8" value="if page status is == profile:&lt;div&gt;elif pagestatus == more_dialog&lt;/div&gt;&lt;div&gt;elif page status == connection_dialog&lt;/div&gt;&lt;div&gt;elif page_status == message_dialog&lt;/div&gt;&lt;div&gt;elif page_status == email_dialog&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Courier New;" vertex="1" parent="FbqJE7wMECRVas3rWbp1-7">
+          <mxGeometry y="30" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-9" value="status setter&lt;div&gt;code request specfific status&lt;br&gt;with this worker it try to get that page&amp;nbsp;&lt;/div&gt;&lt;div&gt;status liek pag ewith more dialog open&amp;nbsp;&lt;br&gt;and set the status after tytaht&lt;/div&gt;&lt;div&gt;maibn program can wait for something&lt;br&gt;liek semaohor to set that statisus else&lt;br&gt;main program raise timeout and proceed with next&amp;nbsp;&lt;br&gt;instruction it has&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="555" y="233" width="290" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="FbqJE7wMECRVas3rWbp1-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.486;entryY=0.014;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FbqJE7wMECRVas3rWbp1-1" target="FbqJE7wMECRVas3rWbp1-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
