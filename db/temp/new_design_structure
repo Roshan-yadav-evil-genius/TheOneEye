@@ -1,0 +1,293 @@
+# DAG Workflow System – Comprehensive Implementation Plan
+
+This document provides a **step-by-step, actionable development plan** to implement the DAG-based workflow execution system. It is designed to be handed directly to an engineering team.
+
+------
+
+## PHASE 0 – Alignment & Foundations
+
+### 0.1 Requirements Finalization
+
+-  Confirm supported node types (Start, Task, Condition, Loop, Merge, End)
+-  Confirm Start node modes:
+  -  Empty
+  -  Webhook (wait)
+  -  From another workflow
+  -  Code/Webhook (dual-entry)
+-  Confirm End node behaviors:
+  -  End (Terminate)
+  -  End (Re-execute)
+-  Define supported execution guarantees (at-least-once initially)
+-  Decide initial storage stack (Postgres + Redis)
+
+### 0.2 Non-Goals (MVP Scope Guardrails)
+
+-  No graph mutation at runtime
+-  No true graph cycles
+-  No human-in-the-loop (for MVP)
+-  No SLA enforcement (add later)
+
+------
+
+## PHASE 1 – DAG Definition & Validation
+
+### 1.1 DAG JSON Schema Design
+
+-  Define Node schema
+  -  id
+  -  type
+  -  config
+-  Define Edge schema
+  -  from
+  -  to
+  -  label (optional)
+-  Define Workflow schema
+  -  workflow_id
+  -  version
+  -  nodes[]
+  -  edges[]
+
+### 1.2 DAG Validation Engine
+
+-  Implement cycle detection (topological sort)
+-  Validate exactly one Start node
+-  Validate every branch ends in an End node
+-  Validate Condition node edge labeling
+-  Validate Loop node sub-DAG integrity
+-  Validate no orphan nodes
+
+Deliverable:
+
+- `validateDag(dagDefinition)`
+
+------
+
+## PHASE 2 – Persistence Layer
+
+### 2.1 Database Schema (Postgres)
+
+-  workflows table
+-  workflow_versions table
+-  executions table
+-  node_executions table
+-  execution_context table
+
+### 2.2 Redis Usage
+
+-  Runnable node queue
+-  Execution locks
+-  Worker coordination (future-ready)
+
+Deliverable:
+
+- Migration scripts
+- Data access layer
+
+------
+
+## PHASE 3 – Execution Engine Core
+
+### 3.1 Execution Lifecycle Model
+
+-  Define execution states (CREATED, RUNNING, WAITING, COMPLETED, FAILED)
+-  Define node states (PENDING, RUNNING, COMPLETED, FAILED, IGNORED)
+
+### 3.2 Scheduler Implementation
+
+-  Load execution state
+-  Identify runnable nodes
+-  Enforce parent-completion rule
+-  Dispatch runnable nodes in parallel
+-  Persist state after every transition
+
+Deliverable:
+
+- Deterministic scheduler loop
+
+------
+
+## PHASE 4 – Node Execution Framework
+
+### 4.1 Base Node Interface
+
+-  Define execute(input, context) contract
+-  Implement execution wrapper (logging, timing, persistence)
+
+### 4.2 TaskNode
+
+-  Input resolution from context
+-  Output persistence
+-  Error capture
+
+### 4.3 ConditionNode
+
+-  Expression evaluation engine
+-  Outgoing edge selection
+-  Mark non-selected branches as IGNORED
+
+### 4.4 MergeNode
+
+-  Parent synchronization logic
+-  Single execution guarantee
+
+------
+
+## PHASE 5 – LoopNode (Encapsulated Iteration)
+
+### 5.1 LoopNode Design
+
+-  Iterator resolution (array / range)
+-  Sub-DAG validation
+-  Execution mode (sequential / parallel)
+
+### 5.2 LoopNode Runtime
+
+-  Spawn sub-executions per iteration
+-  Track sub-execution state
+-  Aggregate outputs
+-  Emit final LoopNode output
+
+Deliverable:
+
+- DAG-safe looping mechanism
+
+------
+
+## PHASE 6 – Start Node Implementation
+
+### 6.1 Start Node Core
+
+-  Enforce no parents rule
+-  Normalize incoming payload
+-  Write initial context
+
+### 6.2 Start Node Modes
+
+-  Empty mode (auto-complete)
+-  Webhook wait mode
+-  From workflow trigger
+-  Code/Webhook dual-entry mode
+
+### 6.3 Webhook Infrastructure
+
+-  Generate webhook URLs
+-  Auth & validation
+-  Resume waiting execution
+
+------
+
+## PHASE 7 – End Node Implementation
+
+### 7.1 End (Terminate)
+
+-  Mark branch complete
+-  Finalize execution when all branches end
+
+### 7.2 End (Re-execute)
+
+-  Emit re-execution signal
+-  Create new execution
+-  Decide input source (configurable)
+-  Ensure no DAG cycles
+
+------
+
+## PHASE 8 – Crash Recovery & Resumability
+
+### 8.1 State Persistence
+
+-  Persist after every node execution
+-  Persist scheduler checkpoints
+
+### 8.2 Resume Logic
+
+-  Reload execution state
+-  Skip completed nodes
+-  Resume pending nodes safely
+
+------
+
+## PHASE 9 – Workflow-to-Workflow Communication
+
+### 9.1 Trigger APIs
+
+-  Internal workflow trigger API
+-  Payload normalization
+
+### 9.2 Execution Isolation
+
+-  Independent execution IDs
+-  Failure isolation between workflows
+
+------
+
+## PHASE 10 – Observability & Debugging
+
+### 10.1 Execution Tracing
+
+-  Node-level logs
+-  Timing metrics
+-  Execution timelines
+
+### 10.2 UI Support (React Flow)
+
+-  Node state visualization
+-  Execution replay
+-  Failure highlighting
+
+------
+
+## PHASE 11 – Security & Controls
+
+-  Webhook authentication
+-  Role-based access for execution APIs
+-  Rate limiting for triggers
+
+------
+
+## PHASE 12 – Testing Strategy
+
+### 12.1 Unit Tests
+
+-  Node execution
+-  Scheduler logic
+-  Validation rules
+
+### 12.2 Integration Tests
+
+-  Full workflow execution
+-  Crash + resume scenarios
+-  Parallel execution correctness
+
+------
+
+## PHASE 13 – Deployment & Operations
+
+-  Configuration management
+-  Health checks
+-  Graceful shutdown
+-  Background worker processes
+
+------
+
+## PHASE 14 – Future Enhancements (Post-MVP)
+
+-  Retry & backoff policies
+-  SLA & timeout enforcement
+-  Human approval nodes
+-  Event-driven re-entry
+-  Workflow templates
+-  Version pinning on re-execute
+
+------
+
+## Final Outcome
+
+By completing this plan, the team will deliver:
+
+- A production-grade DAG workflow engine
+- UI-driven workflow definition
+- Parallel, resumable execution
+- Event-driven and composable workflows
+
+This plan is intentionally structured to allow **incremental delivery** without architectural rewrites.

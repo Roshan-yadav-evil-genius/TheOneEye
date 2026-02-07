@@ -1,0 +1,311 @@
+# DAG-Based Automation System – Detailed Functional Explanation
+
+This document explains **each component of the DAG-based system**, its **functional behavior**, and **how the system works end-to-end**. The goal is to help the team clearly understand the current behavior so functionality can be safely extended or improved.
+
+------
+
+## 1. What This System Is (High-Level)
+
+This system is a **DAG-driven automation and orchestration platform**.
+
+- **DAG (Directed Acyclic Graph)** defines *what* should happen and *in what order*
+- **Nodes** represent executable units (watch, transform, act)
+- **Edges** represent execution dependencies
+- **Triggers** start DAG execution
+- **Agents/Workers** execute nodes
+
+Key guarantees:
+
+- No cyclic execution
+- Deterministic order
+- Parallel execution where possible
+- Event-driven + API-driven
+
+------
+
+## 2. Core Concepts
+
+### 2.1 DAG (Directed Acyclic Graph)
+
+**Function:**
+Defines the execution flow of the system.
+
+**Behavior:**
+
+- Nodes execute only when all parent nodes succeed
+- DAG cannot contain loops
+- Supports fan-in and fan-out
+
+**How it works:**
+
+- DAG is stored as a graph structure (JSON / DB)
+- Topological sorting determines execution order
+- Runtime engine walks the DAG dynamically
+
+------
+
+### 2.2 Node
+
+A **node** is the smallest executable unit.
+
+**Function:**
+
+- Performs a single responsibility
+
+**Examples:**
+
+- Fetch webpage
+- Parse JSON
+- Compare values
+- Send webhook
+- Execute custom code
+
+**Behavior:**
+
+- Receives input from parent nodes
+- Executes its logic
+- Produces output
+- Emits status: SUCCESS / FAILURE / RETRY
+
+**How it works:**
+
+- Node definition includes:
+  - `type`
+  - `config`
+  - `input_schema`
+  - `output_schema`
+- Execution engine injects runtime context
+
+------
+
+## 3. Node Types (Current Behavior)
+
+### 3.1 Watcher Node
+
+**Function:**
+Observes an external system for change.
+
+**Examples:**
+
+- Website DOM change
+- API response change
+- File update
+
+**Behavior:**
+
+- Periodic or event-driven execution
+- Emits event when condition matches
+
+**How it works:**
+
+- Pull-based or push-based
+- Produces structured diff or snapshot
+
+------
+
+### 3.2 Processor / Transformer Node
+
+**Function:**
+Transforms or evaluates data.
+
+**Examples:**
+
+- JSON parsing
+- Regex extraction
+- Condition check
+- Data enrichment
+
+**Behavior:**
+
+- Stateless execution
+- Deterministic output
+
+**How it works:**
+
+- Takes input payload
+- Applies logic
+- Emits transformed output
+
+------
+
+### 3.3 Action Node
+
+**Function:**
+Performs a side-effect.
+
+**Examples:**
+
+- Send email
+- Call webhook
+- Trigger another DAG
+- Store data
+
+**Behavior:**
+
+- Executes only after validation
+- May be retryable
+
+**How it works:**
+
+- Uses adapters (email, slack, http)
+- Handles response codes and retries
+
+------
+
+## 4. Triggering Mechanisms
+
+### 4.1 Mode 1: Schedule Trigger
+
+**Function:**
+Runs DAG on time intervals.
+
+**Behavior:**
+
+- Cron-based
+- Predictable execution
+
+------
+
+### 4.2 Mode 2: Event Trigger
+
+**Function:**
+Starts DAG when an event occurs.
+
+**Behavior:**
+
+- Event-driven
+- Near real-time
+
+------
+
+### 4.3 Mode 3: Manual Trigger
+
+**Function:**
+Human-initiated execution.
+
+**Behavior:**
+
+- Used for testing/debugging
+
+------
+
+### 4.4 Mode 4: Code / Webhook Trigger
+
+**Function:**
+Allows **both programmatic API calls and webhooks** to trigger DAG execution.
+
+**Behavior:**
+
+- External systems call API OR webhook
+- Payload becomes DAG input
+
+**How it works:**
+
+- REST endpoint exposed
+- Webhook endpoint validates signature
+- Unified trigger pipeline
+
+------
+
+## 5. Execution Engine
+
+**Function:**
+Orchestrates DAG execution.
+
+**Behavior:**
+
+- Maintains execution state
+- Handles retries and failures
+- Supports parallelism
+
+**How it works:**
+
+1. Validate DAG
+2. Resolve execution order
+3. Dispatch nodes to workers
+4. Track state
+
+------
+
+## 6. Worker / Agent System
+
+**Function:**
+Executes nodes.
+
+**Behavior:**
+
+- Stateless workers
+- Horizontal scaling
+
+**How it works:**
+
+- Workers poll or receive tasks
+- Execute node logic
+- Push results back
+
+------
+
+## 7. State & Context Management
+
+**Function:**
+Keeps execution data consistent.
+
+**Behavior:**
+
+- Immutable per execution
+- Scoped per DAG run
+
+**How it works:**
+
+- Context object passed between nodes
+- Stored in DB or memory cache
+
+------
+
+## 8. Failure Handling
+
+**Function:**
+Ensures reliability.
+
+**Behavior:**
+
+- Node-level retry
+- DAG-level abort
+- Partial completion tracking
+
+------
+
+## 9. Observability & Debugging
+
+**Function:**
+Makes system transparent.
+
+**Behavior:**
+
+- Logs per node
+- Execution timeline
+- Metrics
+
+------
+
+## 10. Current System Capabilities Summary
+
+- DAG-based deterministic execution
+- Multiple trigger modes
+- Parallel execution
+- Modular node design
+- API + Webhook support
+
+------
+
+## 11. What Can Be Improved Next (Preview)
+
+- Conditional branching
+- Dynamic DAG generation
+- Versioned DAGs
+- Rollback strategies
+- Visual DAG editor
+
+------
+
+This document describes **current behavior only** and is intended as a stable reference before enhancements.
